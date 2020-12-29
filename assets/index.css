@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "Fira Sans Regular";
+    src: url("fonts/FiraSans-Regular.otf");
+}
+
+@font-face {
+font-family: "Fira Sans Heavy";
+src: url("fonts/FiraSans-Heavy.otf");
+}
+
+@font-face {
+font-family: "Fira Sans HeavyItalic";
+src: url("fonts/FiraSans-HeavyItalic.otf");
+}
+
+@font-face {
+    font-family: "Precious";
+    src: url("fonts/Precious.ttf") format("truetype");
+}
+  
+/* 
+The properties that we want every element to follow...
+if the HTML file loads this CSS file in the first place.
+*/
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-size: 100%;
+    background-color: #2C2F33;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.flyingText_container {
+    font-size: 0.8em;
+    padding-top: 5vh;
+}
+
+.flyingText {
+    position: absolute;
+    padding-top: 2vh;
+    animation-name: flyingText;
+    animation-duration: 15s;
+    opacity: 0;
+}
+
+@keyframes flyingText {
+    0% {right: 10%; opacity: 1;}
+    100% {right: 90%; opacity: 1;}
+}
+
+.title {
+    text-align: center;
+    padding-top: 10vh;
+    font-size: 3em;
+    font-family: "Precious";
+}
+
+@keyframes year {
+    from {color: white; opacity: 0;}
+    to {color: red; opacity: 1;}
+}
+
+@keyframes newYear {
+    from {color: white; opacity: 0;}
+    to {color: red; opacity: 1;}
+}
+
+.timer {
+    text-align: center;
+    padding-top: 3vh;
+    font-size: 1em;
+    font-family: "Fira Sans Regular";
+}

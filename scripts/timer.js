@@ -1,51 +1,57 @@
-function getTime() {
-    var current = new Date();
+// Select the timer element
+const timer =  document.getElementById("timer"); 
 
-    var currentH = current.getHours();
+// Set the date we're counting down to
+const newYear = new Date("January 1, 2021 00:00:00");
 
-    var currentM = current.getMinutes();
+// Calculate the time for count down
+function getCountDown() {
+    // Get today's date and time
+    let now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    let distance = newYear.getTime() - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days =  Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = "0" + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = "0" + Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="countdown"
+    timer.textContent = `To 2021: ${+hours + (+days * 24)} Hours ${minutes.slice(-2)} Minutes ${seconds.slice(-2)} Seconds`
 
-    var currentS = current.getSeconds();
-
-    var currentTime = [currentH, currentM, currentS];
-
-    return currentTime;
+    updateTimer()
 }
 
-function calculateCountDown(currentTime) {
-    var countdownH = "0" + Math.abs(23 - currentTime[0]);
-
-    var countdownM = "0" + Math.abs(59 - currentTime[1]);
-
-    var countdownS = "0" + Math.abs(60 - currentTime[2]);
-
-    var countdownTime = countdownH.slice(-2) + "-" + countdownM.slice(-2) + "-" + countdownS.slice(-2);
-
-    return countdownTime;
-}
-
-var timer = document.getElementById("timer");
-
+// Update the timer to display the newly calculated count down
 function updateTimer() {
-    time =  calculateCountDown(getTime())
-
-    timer.textContent = time;
-
-    if (!isNewYear()) {
-        setInterval(updateTimer, 1000);
+    // Update the count down every 1 second
+    let countdownInterval = setInterval(getCountDown, 1000);
+    
+    if (isNewYear()) {
+        clearInterval(countdownInterval);
+        timer.style.animationName = "newYear";
+        timer.style.animationDuration = "4s"
+        timer.style.color = "red";
+        timer.textContent = "Happy New Year!";
+        year.style.animationName = "year";
+        year.style.animationDuration = "4s";
+        year.style.color = "red";
+        year.textContent = "2021";
     }
+    
 }
 
 function isNewYear() {
-    newYear = new Date(2021, 0, 1, 0, 0, 0, 0)
+    let now = new Date().getYear();
 
-    now = new Date()
-
-    if (+newYear === +now) {
-        return ture;
+    // Check if the date is 2021
+    if (+newYear.getYear() <= +now) {
+        return true
     } else {
         return false;
     }
 }
 
-updateTimer();
+getCountDown();
