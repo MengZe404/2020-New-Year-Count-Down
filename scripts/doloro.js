@@ -1,7 +1,7 @@
 class Doloro {
   constructor () {
     this.servers = [
-      'wss://cntdwn20.uber.space/doloro/chat',
+      'ws://cntdwn20.uber.space/doloro/chat',
     ]
     this.connectedServer = null
     this.connectedServerIndex = 0
@@ -42,8 +42,8 @@ class Doloro {
         event: 'lost_connection',
       })
       that.connectedServerIndex++
-      if (this.connectedServerIndex > this.servers.length) {
-        this.connectedServerIndex = 0
+      if (that.connectedServerIndex == that.servers.length) {
+        that.connectedServerIndex = 0
       }
       that._connectSrv(that.servers[that.connectedServerIndex])
     }
