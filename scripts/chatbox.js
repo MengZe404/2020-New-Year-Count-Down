@@ -1,3 +1,6 @@
+const color_options = ["#0074D9", "#FF4136", "#F012BE", "#2ECC40"];
+const color = color_options[getRandom(0, color_options.length)];
+
 class ChatBoxController extends Doloro {
   constructor () {
     super()
@@ -26,11 +29,11 @@ class ChatBoxController extends Doloro {
 
   newMsgBox (params) {
     if (!params.from) {
-      params.from = 'someone said'
+      params.from = document.getElementById("uname").value + ": "
     }
     document.getElementById('chat-messages-container').innerHTML = document.getElementById('chat-messages-container').innerHTML +
     ` <p>
-        <strong>${params.from}</strong> ${params.message}
+        <strong style="color: ${color};">${params.from}</strong> ${params.message}
       </p>`
     this.messagesDisplayedCount++
   }

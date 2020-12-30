@@ -33,26 +33,58 @@ if the HTML file loads this CSS file in the first place.
     color: white;
 }
 
-ul {
-    list-style-type: none;
+@-webkit-keyframes ticker {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+}
+@keyframes ticker {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
 }
 
-.flyingText_container {
-    font-size: 0.8em;
-    padding-top: 5vh;
+.ticker-wrap {
+    position: fixed;
+    top: 2vh;
+    width: 100%;
+    overflow: hidden;
+    height: 20px;
+    padding-left: 100%;
+    box-sizing: content-box;
 }
-
-.flyingText {
-    position: absolute;
-    padding-top: 2vh;
-    animation-name: flyingText;
-    animation-duration: 15s;
-    opacity: 0;
+.ticker-wrap .ticker {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: 30s;
+    animation-duration: 30s;
 }
-
-@keyframes flyingText {
-    0% {right: 10%; opacity: 1;}
-    100% {right: 90%; opacity: 1;}
+.ticker-wrap .ticker__item {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 1em;
 }
 
 .title {
@@ -80,79 +112,26 @@ ul {
 }
 
 .chatbox-container {
-    border: 4px solid red;
-    position: absolute;
-    bottom: 10px;
-    width: calc(100% - 60px);
-    left: 30px
+    position: relative;
+    margin: auto;
+    border: 3px solid white;
+    width: 50vw;
+    height: 50vh;
+    top: 5vh;
 }
 
 .chatbox {
+    padding: 10px;
     overflow: auto;
-    max-height: 30%;
+    max-height: 100%;
     display: block;
 }
 
 .chatbox-controls {
-    width: 100%;
-    text-align: center;
-}
-
-.chatbox-control {
-    display: inline-block;
+    position: relative;
     margin: 4px;
+    text-align: center;
+    top: 10vh;
 }
 
-@-webkit-keyframes ticker {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      visibility: visible;
-    }
-    100% {
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
-    }
-}
-@keyframes ticker {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        visibility: visible;
-    }
-    100% {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-    }
-}
 
-.ticker-wrap {
-    position: fixed;
-    top: 4px;
-    width: 100%;
-    overflow: hidden;
-    height: 20px;
-    padding-left: 100%;
-    box-sizing: content-box;
-}
-.ticker-wrap .ticker {
-    display: inline-block;
-    height: 20px;
-    line-height: 20px;
-    white-space: nowrap;
-    padding-right: 100%;
-    box-sizing: content-box;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-name: ticker;
-    animation-name: ticker;
-    -webkit-animation-duration: 30s;
-    animation-duration: 30s;
-}
-.ticker-wrap .ticker__item {
-    display: inline-block;
-    padding: 0 20px;
-    font-size: 20px;
-}
