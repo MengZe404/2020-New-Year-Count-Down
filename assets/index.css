@@ -78,3 +78,81 @@ ul {
     font-size: 1em;
     font-family: "Fira Sans Regular";
 }
+
+.chatbox-container {
+    border: 4px solid red;
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 60px);
+    left: 30px
+}
+
+.chatbox {
+    overflow: auto;
+    max-height: 30%;
+    display: block;
+}
+
+.chatbox-controls {
+    width: 100%;
+    text-align: center;
+}
+
+.chatbox-control {
+    display: inline-block;
+    margin: 4px;
+}
+
+@-webkit-keyframes ticker {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+}
+@keyframes ticker {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.ticker-wrap {
+    position: fixed;
+    top: 4px;
+    width: 100%;
+    overflow: hidden;
+    height: 20px;
+    padding-left: 100%;
+    box-sizing: content-box;
+}
+.ticker-wrap .ticker {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: 30s;
+    animation-duration: 30s;
+}
+.ticker-wrap .ticker__item {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 20px;
+}

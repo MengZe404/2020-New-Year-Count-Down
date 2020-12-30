@@ -1,7 +1,7 @@
 class Doloro {
   constructor () {
     this.servers = [
-      'wss://cntdwn20.uber.space:8765/doloro/chat',
+      'wss://cntdwn20.uber.space/doloro/chat',
     ]
     this.connectedServer = null
     this.connectedServerIndex = 0
@@ -15,9 +15,6 @@ class Doloro {
   }
 
   _connectSrv(server) {
-    if (this.connectedServerIndex > this.servers.length) {
-      this.connectedServerIndex = 0
-    }
     var that = this
     console.log(`Attempting connection to: ${that.servers[that.connectedServerIndex]}`)
     this.ws = new WebSocket(server)
@@ -45,6 +42,9 @@ class Doloro {
         event: 'lost_connection',
       })
       that.connectedServerIndex++
+      if (this.connectedServerIndex > this.servers.length) {
+        this.connectedServerIndex = 0
+      }
       that._connectSrv(that.servers[that.connectedServerIndex])
     }
   }
@@ -57,7 +57,7 @@ class Doloro {
   }
 
   _responseCb (response) {
-    if (response.event == 'handshake') {
+    if (response.event == 'complete_handshake') {
       this.connectedServer = this.servers[this.connectedServerIndex]
       console.log(`Handshake complete! Now connected to: ${this.connectedServer}`)
     }

@@ -7,11 +7,18 @@
 	<title> New Year's Count Down </title>
 </head>
 <body>
-	<div>
-		<ul class="flyingText_container" id="flyingText_container">
-			<li class="flyingText">Happy New Year</li>
-		</ul>
+	<div class="ticker-wrap">
+		<div class="ticker">
+			<div class="ticker__item">Happy New Year</div>
+			<div class="ticker__item">新年快乐</div>
+			<div class="ticker__item">Bonne Année</div>
+			<div class="ticker__item">あけましておめでとうございます</div>
+			<div class="ticker__item">새해 복 많이 받으세요</div>
+			<div class="ticker__item">Frohes Neues Jahr</div>
+			<div class="ticker__item">Καλή χρονιά</div>
+		</div>
 	</div>
+
 	<div class="title">
 		<h1> We are at - <span id="year">2020</span> </h1>
 	</div>
@@ -19,10 +26,17 @@
 	<div class="timer">
 		<h3 id="timer"></h3>
 	</div>
+
+	<div class="chatbox-container">
+		<div id="chat-messages-container" class="chatbox"></div>
+		<div class="chatbox-controls">
+			<input id="send-message-input" class="chatbox-control" type="text" disabled>
+			<button id="send-message-button" class="chatbox-control" disabled>Send</button>
+		</div>
+	</div>
 </body>
 	<script src="scripts/index.js" defer></script>
 	<script src="scripts/timer.js" defer></script>
-	<script src="scripts/flyingtext.js" defer></script>
-	<!-- <script src="scripts/doloro.js" defer></script>
-	<script src="scripts/chatbox.js" defer></script> -->
+	<script src="scripts/doloro.js" defer></script>
+	<script src="scripts/chatbox.js" defer></script>
 </html>
