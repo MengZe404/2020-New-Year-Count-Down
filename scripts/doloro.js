@@ -15,9 +15,6 @@ class Doloro {
   }
 
   _connectSrv(server) {
-    if (this.connectedServerIndex > this.servers.length) {
-      this.connectedServerIndex = 0
-    }
     var that = this
     console.log(`Attempting connection to: ${that.servers[that.connectedServerIndex]}`)
     this.ws = new WebSocket(server)
@@ -45,6 +42,9 @@ class Doloro {
         event: 'lost_connection',
       })
       that.connectedServerIndex++
+      if (this.connectedServerIndex > this.servers.length) {
+        this.connectedServerIndex = 0
+      }
       that._connectSrv(that.servers[that.connectedServerIndex])
     }
   }
