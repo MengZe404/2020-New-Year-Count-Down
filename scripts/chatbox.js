@@ -3,7 +3,7 @@ class ChatBoxController extends Doloro {
     super()
 
     this.newMsgBox({
-      from: '- Doloro Web Client',
+      from: 'Doloro Web Client',
       message: 'connecting to an available doloro server...',
     })
 
@@ -26,19 +26,19 @@ class ChatBoxController extends Doloro {
 
   newMsgBox (params) {
     if (!params.from) {
-      params.from = '- someone said'
+      params.from = 'someone said'
     }
-    document.getElementById('chat-messages-container').innerHTML = `
-      <p>
-        <strong>${params.from}</strong> ${params.from}
-      </p>` + document.getElementById('chat-messages-container').innerHTML
+    document.getElementById('chat-messages-container').innerHTML = document.getElementById('chat-messages-container').innerHTML +
+    ` <p>
+        <strong>${params.from}</strong> ${params.message}
+      </p>`
     this.messagesDisplayedCount++
   }
 
   eventCb (response) {
-    if (response.event == "handshake") {
+    if (response.event == "complete_handshake") {
       this.newMsgBox({
-        from: '- Doloro Web Client',
+        from: 'Doloro Web Client',
         message: 'connected to a server!'
       })
       document.getElementById('send-message-input').disabled = false
