@@ -1,7 +1,7 @@
 class Doloro {
   constructor () {
     this.servers = [
-      'ws://cntdwn20.uber.space/doloro/chat',
+      'wss://cntdwn20.uber.space/doloro/chat',
     ]
     this.connectedServer = null
     this.connectedServerIndex = 0
