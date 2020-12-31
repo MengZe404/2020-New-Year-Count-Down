@@ -64,11 +64,12 @@ class Doloro {
     this.eventCb(response)
   }
 
-  sendMsg (msg, type) {
+  sendMsg (msg, type, from) {
     if (this.ws.OPEN) {
       this.ws.send(this._fmtrq('send_message', {
         content_type: type,
-        content: msg
+        content: msg,
+        from: from
       }))
     }
   }

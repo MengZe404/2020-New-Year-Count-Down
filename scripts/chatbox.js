@@ -14,13 +14,13 @@ class ChatBoxController extends Doloro {
     document.getElementById('send-message-input').onkeydown = function (e) {
       switch (e.key) {
         case 'Enter':
-          that.sendMsg(e.target.value, 'txt')
+          that.sendMsg(e.target.value, 'txt', document.getElementById('username-input').value)
           e.target.value = ''
           break
       }
     }
     document.getElementById('send-message-button').onclick = function () {
-      that.sendMsg(document.getElementById('send-message-input').value, 'txt')
+      that.sendMsg(document.getElementById('send-message-input').value, 'txt', document.getElementById('username-input').value)
       document.getElementById('send-message-input').value = ''
     }
 
@@ -29,11 +29,11 @@ class ChatBoxController extends Doloro {
 
   newMsgBox (params) {
     if (!params.from) {
-      params.from = document.getElementById("uname").value + ": "
+      params.from =  + "someone said"
     }
     document.getElementById('chat-messages-container').innerHTML = document.getElementById('chat-messages-container').innerHTML +
     ` <p>
-        <strong style="color: ${color};">${params.from}</strong> ${params.message}
+        <strong style="color: ${color};">${params.from}</strong>: ${params.message}
       </p>`
     this.messagesDisplayedCount++
   }
